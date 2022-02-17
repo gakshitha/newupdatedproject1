@@ -191,22 +191,7 @@ var dbController = {
         var userData = collection.findOne(filter)
         return userData
     },
-/*
-    viewallads: function (id, res) {
-        var filter = {
-            "memberid": id
-        }
-        imageUrl = "/media/" + adId + "." + extension
-        var collection = db.collection("ads")
-        collection.find(filter).sort({ timestamp: -1 }).toArray(function (err, result) {
-            if (err) {
-                console.log("Err in view")
-                return
-            }
-            res.render("member-viewads", { title: "view page", data: result, 'imageUrl': imageUrl })
-        })
-    },
-*/
+
     viewallads: function (id, res) {
         var collection = db.collection("ads")
         var filter = {
