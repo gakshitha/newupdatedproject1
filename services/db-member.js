@@ -191,7 +191,7 @@ var dbController = {
         var userData = collection.findOne(filter)
         return userData
     },
-
+/*
     viewallads: function (id, res) {
         var filter = {
             "memberid": id
@@ -206,6 +206,21 @@ var dbController = {
             res.render("member-viewads", { title: "view page", data: result, 'imageUrl': imageUrl })
         })
     },
+*/
+    viewallads: function (id, res) {
+        var collection = db.collection("ads")
+        var filter = {
+            "memberid": id
+        }
+        collection.find(filter).sort({ createdDateTime: -1 }).toArray(function (err, result) {
+            if (err) {
+                console.log("Error")
+                return
+            }
+            res.render("member-viewads", { title: "List Of Ads", data: result, isMember: true })
+        })
+    },
+
     deletead: function (id, res) {
         var collection = db.collection("ads")
         var filter = {
